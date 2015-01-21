@@ -33,4 +33,22 @@ class Line
     DB.exec("INSERT INTO line_stations (line_id, station_id) VALUES (#{self.id()}, #{station.id()});")
   end
 
+  define_singleton_method(:lines_at_station) do |station|
+    line_ids = []
+    returned_lines = []
+
+    returned_rows = DB.exec("SELECT * FROM line_stations WHERE station_id = #{station.id()};")
+    returned_rows.each() do |row|
+      line_id = row["line_id"].to_i()
+      line_ids.push(line_id)
+    end
+
+    lines_all = Line.all()
+    lines_all.each() do |line|
+      if line_ids.include?(line.id())
+        returned_lines.push(line)
+      end
+    end
+    returned_lines
+  end
 end

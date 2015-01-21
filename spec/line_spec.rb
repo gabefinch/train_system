@@ -36,9 +36,18 @@ describe('Line') do
       test_station1 = Station.new({:name => "Ruby Junction", :id => nil})
       test_station1.save()
       test_line1.add_station(test_station1)
-      expect(Station.on_line(test_line1)).to(eq([test_station1]))
+      expect(Station.stations_on_line(test_line1)).to(eq([test_station1]))
     end
   end
 
-  
+  describe(".lines_at_station") do
+    it("returns an array of lines passing through a station") do
+      test_line1 = Line.new({:name => "Blue", :id => nil})
+      test_line1.save()
+      test_station1 = Station.new({:name => "Ruby Junction", :id => nil})
+      test_station1.save()
+      test_line1.add_station(test_station1)
+      expect(Line.lines_at_station(test_station1)).to(eq([test_line1]))
+    end
+  end
 end

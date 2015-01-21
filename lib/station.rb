@@ -29,7 +29,7 @@ attr_reader(:name, :id)
     name.&(id)
   end
 
-  define_singleton_method(:on_line) do |line|
+  define_singleton_method(:stations_on_line) do |line|
     station_ids = []
     line_stations = []
 
