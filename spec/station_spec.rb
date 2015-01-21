@@ -20,9 +20,9 @@ describe('Station') do
 
   describe("#id") do
     it('returns id from an instance of station') do
-      test_station1 = Line.new({:name => "Blue"})
+      test_station1 = Station.new({:name => "Gresham"})
       test_station1.save()
-      test_station2 = Line.new({:name => "Red"})
+      test_station2 =Station.new({:name => "Ruby Junction"})
       test_station2.save()
       id = test_station2.id()
       expect(id.class()).to(eq(Fixnum))

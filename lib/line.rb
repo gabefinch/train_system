@@ -29,4 +29,8 @@ class Line
     name.&(id)
   end
 
+  define_method(:add_station) do |station|
+    DB.exec("INSERT INTO line_stations (line_id, station_id) VALUES (#{self.id()}, #{station.id()});")
+  end
+
 end

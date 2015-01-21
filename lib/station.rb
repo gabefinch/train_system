@@ -29,5 +29,22 @@ attr_reader(:name, :id)
     name.&(id)
   end
 
+  define_singleton_method(:on_line) do |line|
+    station_ids = []
+    line_stations = []
 
+    returned_rows = DB.exec("SELECT * FROM line_stations WHERE line_id = #{line.id()};")
+    returned_rows.each() do |row|
+      station_id = row["station_id"].to_i()
+      station_ids.push(station_id)
+    end
+
+    stations_all = Station.all()
+    stations_all.each() do |station|
+      if station_ids.include?(station.id())
+        line_stations.push(station)
+      end
+    end
+    line_stations
+  end
 end

@@ -29,4 +29,16 @@ describe('Line') do
       expect(id.class()).to(eq(Fixnum))
     end
   end
+  describe("#add_station") do
+    it("links a station to a line in line_stations table") do
+      test_line1 = Line.new({:name => "Blue", :id => nil})
+      test_line1.save()
+      test_station1 = Station.new({:name => "Ruby Junction", :id => nil})
+      test_station1.save()
+      test_line1.add_station(test_station1)
+      expect(Station.on_line(test_line1)).to(eq([test_station1]))
+    end
+  end
+
+  
 end

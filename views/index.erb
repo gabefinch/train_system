@@ -2,13 +2,13 @@
 
 <form action= "/add_station" class="form-group" method="post">
   <label for="station_name">Station name:</label>
-  <input name="station_name" id="station_name" type="text">
+  <!-- <input name="station_name" id="station_name" type="text"> -->
   <button type="submit" class="btn btn-sm btn-primary">Add station</button>
 </form>
 
 
   <% @all_stations.each() do |station| %>
   <ul>
-    <li><%= station.name() %></li>
+    <li><a href=" "><%= station.name() %></a></li>
   </ul>
   <% end %>
