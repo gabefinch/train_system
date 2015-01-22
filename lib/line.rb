@@ -51,4 +51,14 @@ class Line
     end
     returned_lines
   end
+  define_singleton_method(:find_by_id) do |id|
+    match = nil
+    Line.all().each() do |line|
+      if line.id().==(id)
+        match = line
+      end
+    end
+    match
+  end
+
 end

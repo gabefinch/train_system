@@ -28,4 +28,15 @@ describe('Station') do
       expect(id.class()).to(eq(Fixnum))
     end
   end
+
+  describe('.find_by_id') do
+    it("returns station object given its id") do
+      test_station1 = Station.new({:name => "Gresham"})
+      test_station1.save()
+      test_station2 =Station.new({:name => "Ruby Junction"})
+      test_station2.save()
+      expect(Station.find_by_id(test_station1.id())).to(eq(test_station1))
+    end
+  end
+
 end

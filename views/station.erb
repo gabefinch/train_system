@@ -1,0 +1,6 @@
+<%= @station.name() %>
+<% Line.lines_at_station(@station).each() do |line| %>
+<ul>
+  <li><%= line.name() %></li>
+</ul>
+<% end %>

@@ -47,4 +47,16 @@ attr_reader(:name, :id)
     end
     line_stations
   end
+
+  define_singleton_method(:find_by_id) do |id|
+    match = nil
+    Station.all().each() do |station|
+      if station.id().==(id)
+        match = station
+      end
+    end
+    match
+  end
+
+
 end
